@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shopping</title>
+
+        <link rel="stylesheet" href="Assets/Styles/shopping.css">
+        <script src="Assets/Scripts/update.js" defer ></script>
+    </head>
+    <body>
+        <h1 class="header">
+            Gemma Shopping
+        </h1>
+        <input id="input" type="text">
+        <button class="filter" onclick="filter()">filter</button>
+        <button class="sort" onclick="sorting()">sort</button>
+        <button class="cart" onclick="keranjang()">cart</button>
+            <ul id="list"> 
+            </ul>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h2>Keranjang Belanjaan</h2>
+                <span class="close"></span> 
+                
+              <ul id="daftar"> 
+                </ul>
+              <h2 id="harga"></h2>
+            </div>
+        </div>
+    </body>
+</html>

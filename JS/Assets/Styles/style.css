@@ -1,0 +1,68 @@
+    
+    .checked {
+      text-decoration: line-through;
+    }
+    header {
+      background: rgba(0, 122, 236, 0.849);
+      color: white;
+      font-size: 30px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      width: 97.6%;
+      }
+      
+    input {
+        width: 60%;
+        float: center ;
+        padding: 0.5rem;
+        margin-bottom: 16px;
+        background: rgb(255, 255, 255);
+        font-size: 20px;
+        border: 2px solid #023d6d;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+     button {
+          
+      display: inline-block;
+      padding: 10px 30px;
+      font-size: 20px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #127380;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+      }
+    button:hover {background-color: #007281}
+
+    button:active {
+          background-color:#069baf;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+      }
+      ul {
+        background:  rgb(0, 158, 105);
+        padding: 1rem;
+        float: center;
+      }
+      
+      ul li {
+        background: #464646;
+        margin: 10px;
+        font-size: 25px;
+        font-family: Times New Roman;
+        border-radius: 9px;
+        
+      }
+      .close{
+        color: tomato;
+      }
+      .test{
+        color: rgb(0, 4, 211);
+      }

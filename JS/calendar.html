@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+
+    <link rel="stylesheet" href="Assets/Styles/calendar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="calendar">
+        <div class="month">
+          <i class="fas fa-angle-left prev"></i>
+          <div class="date">
+            <h1></h1>
+            <p></p>
+          </div>
+          <i class="fas fa-angle-right next"></i>
+        </div>
+        <div class="weekdays">
+          <div>Su</div>
+          <div>Mo</div>
+          <div>Tu</div>
+          <div>We</div>
+          <div>Th</div>
+          <div>Fr</div>
+          <div>Sa</div>
+        </div>
+        <div class="days"></div>
+        
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form name="toDo">
+              <label for="inputValue"></label
+              ><input type="text" class="inputValue" id="inputValue" /><br />
+              <button class="naga" type="button" onclick="add(); 
+              birthday();">
+                Birthday
+              </button>
+              <button class="naga" type="button" onclick="add(); 
+              meeting();">
+                Meeting
+              </button>
+              <button class="naga" type="button" onclick="add(); 
+              holiday();">
+                Holiday
+              </button>
+              
+            </form>
+            <ul>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="Assets/Scripts/calendar.js" ></script>
+  </body>
+</html>

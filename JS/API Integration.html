@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Current Weather</title>
+    <style>
+      body {
+        background-color: rgb(250, 245, 237);
+      }
+      #location {
+        padding-bottom: 50px;
+        
+      }
+      #tanggal {
+        background-color: rgb(235, 216, 192);
+        
+      }
+      #suhu {
+        background-color: rgb(157, 233, 233);
+      }
+      #selisih {
+        background-color: rgb(158, 240, 212);
+      }
+      #label {
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="input" type="text" />
+    <button id="selector" onclick="selectCity()">select</button>
+
+    <h2 id="location"></h2>
+    <div id="label">
+      <div style="float: left; width: 200px">Tanggal</div>
+      <div style="float: left; width: 100px">Suhu</div>
+      <div style="float: left; width: 200px">Perbedaan</div>
+    </div>
+
+    <div style="float: left; width: 200px" id="tanggal"></div>
+    <div style="float: left; width: 100px" id="temp"></div>
+    <div style="float: left; width: 200px" id="selisih"></div>
+
+    <script lang="text/javascript">
+      function weatherBalloon( cityID ) {
+          var key = '271da6b323b05ebaf2b4aaa0f3378f89';
+          fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityID+ ', &appid=' + key)
+          .then(function(resp) { return resp.json() }) // Convert data to json
+          .then(function(data) {
+              console.log(data)
+              console.log(data.list);
+              console.log(data.list[0].main.temp_min);
+              drawWeather(data)
+
+          })
+          .catch(function() {
+            document.getElementById('location').innerHTML = "Error! City not found!";
+          })
+          ;
+      }
+      let city = "";
+      function selectCity(){
+        let text = document.getElementById('input').value;
+          if (text){
+
+            console.log(text)
+            let city = text;
+            weatherBalloon( city )
+          }
+          else{
+            document.getElementById('location').innerHTML = "Error! Please input the city name!";
+          }
+            ;
+        }
+
+
+
+
+      function drawWeather( d ) {
+        document.getElementById('temp').innerHTML = "";
+        document.getElementById('tanggal').innerHTML = "";
+        document.getElementById('selisih').innerHTML = "";
+
+
+        var celcius = Math.round(parseFloat((d.list[6].main.temp_max+d.list[6].main.temp_min)/2)-273.15);
+        var celcius1 = Math.round(parseFloat((d.list[14].main.temp_max+d.list[14].main.temp_min)/2)-273.15);
+        var celcius2 = Math.round(parseFloat((d.list[22].main.temp_max+d.list[22].main.temp_min)/2)-273.15);
+        var celcius3 = Math.round(parseFloat((d.list[30].main.temp_max+d.list[30].main.temp_min)/2)-273.15);
+        var celcius5 = Math.round(parseFloat((d.list[38].main.temp_max+d.list[38].main.temp_min)/2)-273.15);
+
+        var selisih1 = parseFloat(d.list[6].main.temp_max-d.list[6].main.temp_min);
+        var selisih2 = parseFloat(d.list[14].main.temp_max-d.list[14].main.temp_min);
+        var selisih3 = parseFloat(d.list[22].main.temp_max-d.list[22].main.temp_min);
+        var selisih5 = parseFloat(d.list[30].main.temp_max-d.list[30].main.temp_min);
+        var selisih6 = parseFloat(d.list[38].main.temp_max-d.list[38].main.temp_min);
+
+
+        let rata = (celcius+celcius1+celcius2+celcius3+celcius5)/5
+        let rata1 = (selisih1+selisih2+selisih3+selisih5+selisih6)/5
+
+        let tanggal1 = [d.list[6].dt_txt,d.list[14].dt_txt, d.list[22].dt_txt, d.list[30].dt_txt,d.list[38].dt_txt, "Rata-rata"]
+        let suhu = [celcius, celcius1,celcius2,celcius3,celcius5, rata]
+        let selisih = [selisih1 ,selisih2, selisih3, selisih5, selisih6, rata1]
+        console.log(selisih1)
+
+        for (let prop of tanggal1) {
+            console.log(prop);
+            document.getElementById('tanggal').innerHTML += `<div> ${prop}</div>`
+        }
+
+        for (let prop of suhu) {
+            console.log(prop);
+            document.getElementById("temp").innerHTML += `<div> ${prop}C</div>`
+        }
+        for (let prop of selisih) {
+            console.log(prop);
+            document.getElementById("selisih").innerHTML += `<div> ${prop}C</div>`
+        }
+
+
+      	document.getElementById('location').innerHTML = d.city.name;
+      }
+    </script>
+  </body>
+</html>
